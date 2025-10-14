@@ -1,0 +1,39 @@
+//학번 : 202511239   
+//이름 : 채명식
+//프로그램 명 : ch10 예제 13
+//날짜 : 0926
+
+#include <stdio.h>
+#include <math.h>
+
+typedef struct point		
+{
+	int x, y;
+} POINT;
+
+typedef struct line
+{
+	POINT start, end;
+} LINE;
+
+double get_length(const LINE *ln);
+
+int ex10_13(void)
+{
+	LINE ln1 = { {10, 20}, {30, 40} };
+
+	printf("직선의 시작점: (%d, %d)\n", ln1.start.x, ln1.start.y);
+	printf("직선의 끝점: (%d, %d)\n", ln1.end.x, ln1.end.y);
+
+	printf("직선의 길이: %f\n", get_length(&ln1));
+	
+	return 0;
+}
+
+double get_length(const LINE* ln)	
+{
+	int dx = ln->end.x - ln->start.x;
+	int dy = ln->end.y - ln->start.y;
+	
+	return sqrt(dx * dx + dy * dy);
+}

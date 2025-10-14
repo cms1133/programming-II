@@ -1,0 +1,26 @@
+//학번 : 202511239   
+//이름 : 채명식
+//프로그램 명 : ch10 예제 12
+//날짜 : 0926
+
+#include <stdio.h>
+
+typedef struct data {
+	unsigned short year : 7;
+	unsigned short month : 4;
+	unsigned short day : 5;
+	
+} DATE;
+
+int ex10_12(void)
+{
+	DATE dday;
+	dday.year = 18;	
+	dday.month = 11;
+	dday.day = 30;
+
+	printf("DATE의 크기 = %d\n", sizeof(DATE));
+	printf("%d/%d/%d\n", dday.year + 2000, dday.month, dday.day);
+
+	return 0;
+}
