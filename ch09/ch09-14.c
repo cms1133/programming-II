@@ -7,6 +7,11 @@
 #include <stdio.h>
 #include <string.h>
 
+int swap_string(char* lhs, char* rhs, int size);
+
+#define MAX 5  //2차원 배열의 행 크기
+#define BUF_SZ 30 // 2차원 배열의 열 크기
+
 int main(void)
 {
     const char *str_menu[] = {
@@ -19,21 +24,43 @@ int main(void)
     int sz_menu = sizeof(str_menu) / sizeof(str_menu[0]);
     int menu;
 
-    while (1)
-    {
-        int i;
-        for (i = 0; i < sz_menu; i++)
-            printf("%d.%s\n", i, str_menu[i]);
+    puts("<< 정렬 전 >>");
+    for (i = 0; i < MAX; i++)
+        puts(books[i]);
 
-        printf("메뉴 선택?");
-        scanf("%d", &menu);
-        if (menu == 0)
-            break;
-        else if (menu > 0 && menu < sz_menu)
-           printf("%s 메뉴를 선택했습니다.")
-        else
-           printf("잘못 선택했습니다.\n\n");
+    for (i =0; i < MAX - 1; i++)
+    {
+        index = i;
+        for (j = i + 1; j MAX; j++)
+        {
+            if (strcmp(books[index], books[j]) > 0)
+                index = j;
+        }
+        if (i != index)
+        {
+            swap_string(books[index], books[i], BUF_SZ);
+        }
     }
 
+    puts("<< 정렬 후 >>");
+    for (i = 0; i < MAX; i++)
+        puts(books[i]);
+
     return 0;
+
+}
+
+int swap_string(char* lhs, char* rhs, int size)
+{
+    int lhs_len = strlen(lhs);
+    int rhs_len = strlen(rhs);
+    char temp[BUF_SZ] = "";
+
+    if (lhs_len + 1 > size || rhs_len + 1 > size)
+        return 0; 
+
+    strcpy(temp,lhs);
+    strcpy(lhs, rhs);
+    srtcpy(rhs, temp);
+    return 1;
 }

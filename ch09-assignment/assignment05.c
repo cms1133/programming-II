@@ -7,6 +7,7 @@
 
 
 #include<stdio.h>
+#include<string.h>
 #define SIZE 255 
 int strcmp_ic(char* a, char* b) {
 
@@ -30,9 +31,11 @@ int main(void) {
 	char b[SIZE] = "";
 
 	printf("첫 번째 문자열? ");
-	gets_s(a, sizeof(a));
+	fgets(a, sizeof(a), stdin);
+	a[strcspn(a, "\n")] = '\0';
 	printf("두 번째 문자열? ");
-	gets_s(b, sizeof(b));
+	fgets(b, sizeof(b), stdin);
+	b[strcspn(b, "\n")] = '\0';
 
 	if (strcmp_ic(a, b) < 0) {
 		printf("%s와 %s가 다릅니다.\n", a, b);

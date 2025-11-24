@@ -19,13 +19,13 @@ int main(void) {
 		"need",
 		"admin"
 	};
-	char PASS[5][MAX]{
-		"123abc",
+	char PASS[5][MAX]
+	{	"123abc",
 		"123mmm",
 		"delicious",
 		"money",
 		"want_to_go_home"
-	};
+    };
 	char id[MAX] = "";
 	char pass[MAX] = "";
 
